@@ -25,7 +25,7 @@ This project implements an intelligent system to detect SSH brute-force attacks 
 - **Mitigation Strategy**: Suggests appropriate mitigation actions, such as blocking suspicious IPs or sending alerts to system administrators.
 
 ## Project Structure
-![Project Structure](images/project_structure.png)
+![Project Structure](NEW_UML_CROP.png)
 
 
 ## Methodology
