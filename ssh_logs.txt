@@ -1,0 +1,18 @@
+# Cluster 1 (user: root)
+Oct 10 10:00:00 server sshd[123]: Failed password for root from 192.168.1.100 port 1234 ssh2
+Oct 10 10:00:01 server sshd[124]: Failed password for root from 192.168.1.101 port 1234 ssh2
+Oct 10 10:00:02 server sshd[125]: Failed password for root from 192.168.1.102 port 1234 ssh2
+Oct 10 10:00:03 server sshd[126]: Failed password for root from 192.168.1.103 port 1234 ssh2
+
+# Cluster 2 (user: admin)
+Oct 10 11:00:00 server sshd[223]: Failed password for admin from 203.0.113.10 port 5678 ssh2
+Oct 10 11:00:01 server sshd[224]: Failed password for admin from 203.0.113.11 port 5678 ssh2
+Oct 10 11:00:02 server sshd[225]: Failed password for admin from 203.0.113.12 port 5678 ssh2
+
+# Some noise (user: test)
+Oct 10 12:00:00 server sshd[323]: Failed password for test from 198.51.100.5 port 9012 ssh2
+Oct 10 12:00:01 server sshd[324]: Failed password for test from 198.51.100.6 port 9012 ssh2
+
+# An IP connecting the clusters (user: guest)
+Oct 10 13:00:00 server sshd[423]: Failed password for guest from 192.168.1.100 port 1234 ssh2
+Oct 10 13:00:01 server sshd[424]: Failed password for guest from 203.0.113.10 port 5678 ssh2
