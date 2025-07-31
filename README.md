@@ -1,46 +1,47 @@
-# Intelligent-SSH-Attack-Detection-model-using-K-Clique-Clustering-and-Reinforcement-Learning-
-Intelligent SSH Attack Detection model using K-Clique Clustering and Reinforcement Learning 
-# Intelligent SSH Attack Detection Model using K-Clique Clustering and Reinforcement Learning
+# SSH Log Analyzer using K-Clique Clustering
 
-This project implements an intelligent system to detect SSH brute-force attacks using **K-Clique Clustering** for graph-based clustering and **Reinforcement Learning** to adapt to evolving attack patterns. The model processes SSH logs, identifies suspicious IP clusters, and uses machine learning techniques to enhance detection capabilities.
-
-## Table of Contents
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Methodology](#methodology)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Example Code](#example-code)
-- [Results](#results)
-- [Future Enhancements](#future-enhancements)
-- [Authors](#authors)
-- [License](#license)
+This project provides a tool to analyze SSH authentication logs and detect potential brute-force attacks by identifying clusters of suspicious IP addresses. It uses the k-clique percolation algorithm to find groups of IP addresses that have attempted to log in with the same usernames.
 
 ## Features
 
-- **SSH Log Parsing**: Extracts relevant features from SSH log files, including IP addresses, timestamps, usernames, and connection statuses.
-- **Graph-Based Clustering**: Uses **K-Clique Percolation** to detect clusters of IP addresses that may indicate coordinated attack attempts.
-- **Reinforcement Learning**: A learning model continuously adapts and improves detection performance based on feedback from past detections.
-- **Real-Time Monitoring**: Enables detection and mitigation of brute-force attacks in real-time by analyzing SSH logs.
-- **Mitigation Strategy**: Suggests appropriate mitigation actions, such as blocking suspicious IPs or sending alerts to system administrators.
-
-## Project Structure
-![Project Structure](NEW_UML_CROP.png)
-
-
-## Methodology
-
-1. **Log Preprocessing**: Parse SSH logs and extract important features such as IP addresses, timestamps, and connection attempts.
-2. **Network Graph Construction**: Build a graph where nodes represent IP addresses and edges represent SSH interactions between IPs.
-3. **K-Clique Clustering**: Use K-Clique Percolation to identify clusters of suspicious IP addresses that may indicate malicious behavior.
-4. **Reinforcement Learning Integration**: The model continuously learns from new data to improve attack detection and adapts to new attack patterns.
-5. **Mitigation Actions**: Based on detected patterns, the system can trigger responses like blocking IPs or alerting administrators.
+- **SSH Log Parsing**: Extracts failed login attempts from standard SSH log files.
+- **Graph-Based Clustering**: Builds a graph of IP addresses and uses k-clique percolation to find communities of related IPs.
+- **Visualization**: Generates a graph visualization of the IP network and the detected clusters, saved as a PNG image.
+- **Command-Line Interface**: Easy-to-use CLI to specify the log file, k-value, and output file.
 
 ## Installation
 
-Follow these steps to install and set up the project on your local machine.
+1.  Clone the repository:
+    ```bash
+    git clone <repository-url>
+    cd <repository-directory>
+    ```
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/intelligent-ssh-attack-detection.git
-   cd intelligent-ssh-attack-detection
+2.  Install the required Python packages using the `requirements.txt` file:
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+## Usage
+
+You can run the analysis from the command line. You need to provide the path to your SSH log file.
+
+### Basic Usage
+
+To analyze a log file named `ssh_logs.txt` with the default k-value of 3:
+```bash
+python3 ssh_log_analyzer/main.py ssh_logs.txt
+```
+This will print the found clusters to the console and generate a `clusters.png` file in the root directory.
+
+### Options
+
+-   `-k <value>`: Specify the value of k for the k-clique algorithm. This determines the minimum size of the cliques to be considered.
+-   `-o <filename>` or `--output <filename>`: Specify the name of the output image file.
+
+### Example with Options
+
+To run the analysis with `k=4` and save the output to `my_analysis.png`:
+```bash
+python3 ssh_log_analyzer/main.py ssh_logs.txt -k 4 -o my_analysis.png
+```
